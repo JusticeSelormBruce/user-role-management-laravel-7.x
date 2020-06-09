@@ -20,21 +20,18 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+//register user as admin
 Route::get('register-user','HomeController@registrationIndex');
 Route::post('create-user-account','HomeController@createUserAccount');
 
-
+// main controller 
 Route::get('dashboard', 'MainController@dashboard');
-
 Route::get('admin/assign-privilege-index', 'MainController@AssignPrivilegeIndex');
 Route::get('admin/assign-privilege-form', 'MainController@AssignPrivilegeForm');
 Route::post('admin/assign-privilege', 'MainController@AssignPrivilege');
 Route::post('admin/get-user-roles', 'MainController@getUserRoles')->name('get.user.roles');
 Route::get('admin/user-accounts-index', 'MainController@UserAccountsIndex');
 Route::post('admin/register-user', 'MainController@RegisterUser');
-
-
 
 
 //Reset User Password Route Start
