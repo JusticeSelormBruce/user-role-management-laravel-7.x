@@ -17,7 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('boostrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 </head>
 <body>
     <div id="app">
@@ -76,5 +77,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{asset('boostrap/js/jquery.js')}}"></script>
+    <script src="{{asset('boostrap/js/bootstrap.js')}}"></script>
 </body>
 </html>

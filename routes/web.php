@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 //register user as admin
 Route::get('register-user','HomeController@registrationIndex');
 Route::post('create-user-account','HomeController@createUserAccount');
 
-// main controller 
+// main controller
 Route::get('dashboard', 'MainController@dashboard');
 Route::get('admin/assign-privilege-index', 'MainController@AssignPrivilegeIndex');
 Route::get('admin/assign-privilege-form', 'MainController@AssignPrivilegeForm');

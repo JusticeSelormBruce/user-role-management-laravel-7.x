@@ -19,10 +19,10 @@
                     <div class=" row py-2">
                         <div class="mx-auto">
                             <div class="lead text-light">
-                                Total Incoming Memo's
+                           some data hewre
                             </div>
                             <div class="row justify-content-center py-1">
-                                {{-- <h1 class="h3">{{$incomingCount}}</h1> --}}
+                             ............................................
                             </div>
                             <div class="row justify-content-center">
                                 <div class="py-1">
@@ -42,10 +42,10 @@
                     <div class=" row py-2">
                         <div class="mx-auto">
                             <div class="lead text-light">
-                                Total  Memo's Dispatched
+                              some data here
                             </div>
                             <div class="row justify-content-center py-1">
-                                {{-- <h1 class="h3">{{$countDispatch}}</h1> --}}
+                                ............................................
                             </div>
                             <div class="row justify-content-center">
                                 <div class="py-1">

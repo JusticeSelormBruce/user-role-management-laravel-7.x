@@ -35,8 +35,8 @@
         }
 
         .img1 {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 150px;
         }
 
         .s {
@@ -61,7 +61,7 @@
         <div class="logo">
             <a href="#" class="simple-text">
 
-        <span class="mx-5"> <img src="{{asset('icons/logo-round.png')}}" alt="Profile" class="img1 rounded"></span>
+        <span class="mx-5"> <img src="{{asset('icons/avatar.PNG')}}" alt="Profile" class="img1 "></span>
 
             </a>
 
@@ -159,10 +159,14 @@
 <script src="{{asset('paper-dashboard/js/bootstrap-notify.js')}}"></script>
 <script src="{{asset('paper-dashboard/js/paper-dashboard.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
-
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 
 <script>
+     $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+
     $('.alert').alert()
 </script>
 

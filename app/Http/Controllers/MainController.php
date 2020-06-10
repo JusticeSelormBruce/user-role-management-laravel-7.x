@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Role;
 use App\Route;
-use App\Routes;
+
 use App\User;
-use App\UserRoles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Session;
 
 class MainController extends Controller
 {
+
     public function dashboard()
     {
 
-        if (Auth::user()->routes_ids != null) {
-            $role_ids = json_decode('[' . Auth::user()->routes_ids . ']', true);
+        if (Auth::user()->role->routes_ids != null) {
+            $role_ids = json_decode('[' . Auth::user()->role->routes_ids . ']', true);
+
             for ($x = 0; $x <= sizeof($role_ids[0]) - 1; $x++) {
                 $links[] = Route::whereId($role_ids[0][$x])->first();
             }
@@ -31,6 +33,7 @@ class MainController extends Controller
         } else {
             $links = null;
         }
+
         Session::put('routes', $links);
         return view('dashboard');
     }
@@ -65,31 +68,28 @@ class MainController extends Controller
     public function getSelectedRolesLogic()
     {
         $data = Session::get('user_id');
-        $data = json_decode('[' . $data->role_id . ']', true);
+        $data = json_decode('[' . $data->routes_ids . ']', true);
         return $data;
     }
 
     public function AssignPrivilege(Request $request)
     {
+
         $user_id = Session::get('id');
         $user_role_exist = Role::where('user_id', $user_id)->get()->first();
         if ($user_role_exist == null) {
             $data = implode(',', $request->role_id);
             $value = "[" . "" . $data . "" . "]";
-            $result = Role::create(['user_id' => $user_id, 'role_id' => $value]);
-            $this->setUserRole($user_id, $result->id);
+            Role::create(['user_id' => $user_id, 'routes_ids' => $value]);
         } else {
 
-            Role::whereId($user_role_exist->id)->update(['role_id' => $request->role_id]);
+            Role::whereId($user_role_exist->id)->update(['routes_ids' => $request->role_id]);
         }
 
         return back()->with('msg', 'Privileges granted  to user successfully');
     }
 
-    public function setUserRole($user_id, $user_role_id)
-    {
-        User::whereId($user_id)->update(['user_role_id' => $user_role_id]);
-    }
+
     public function UserAccountsIndex()
     {
         $users = User::all();
